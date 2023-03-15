@@ -1,0 +1,24 @@
+# Maven target directory
+target/
+
+# IDE-specific files
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Compiled class files
+**/*.class
+
+# Build output files
+build/
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.swp
+*~
