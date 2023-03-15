@@ -28,9 +28,11 @@ Access the web page at http://localhost:8080
 ```bash
 # Delete the previous container
 docker rm -f my-app
+
 vi Dockerfile
 # Comment the "EXPOSE" and "ENTRYPOINT" lines from the first stage
 # Uncomment the lines of the second stage, save and quit
+
 docker build -t spring-host-status:v1.0.1 .
 docker images
 # You'll see that the new image is only ~110 MB
