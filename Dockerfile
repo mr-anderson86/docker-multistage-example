@@ -12,6 +12,6 @@ ENTRYPOINT ["java", "-jar", "/app/target/host-status.jar"]
 # (Comment out the above "EXPOSE" and "ENTRYPOINT" lines, and uncomment the below lines)
 
 #FROM openjdk:8-alpine3.7
-#copy --from=build /app/target/host-status.jar host-status.jar
+#COPY --from=build /app/target/host-status.jar host-status.jar
 #EXPOSE 8080
 #ENTRYPOINT ["java", "-jar", "host-status.jar"]

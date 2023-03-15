@@ -19,7 +19,7 @@ cd docker-multistage-example
 docker build -t spring-host-status:v1.0.0 .
 docker images
 # You'll see that the image is ~400 MB
-docker run -d --name <container-name> -p 8080:8080 spring-host-status:1.0.0
+docker run -d --name <container-name> -p 8080:8080 spring-host-status:v1.0.0
 ```
 Access the web page at http://localhost:8080
 
@@ -34,14 +34,14 @@ docker images
 # You'll see that the new image is only ~110 MB
 # The runtime doesn't need the packages/libraries it used only for the compilation stage
 # It needs only the host-status.jar file - so it saves a lot of space.
-docker run -d --name <container-name> -p 8080:8080 spring-host-status:1.0.1
+docker run -d --name <container-name> -p 8080:8080 spring-host-status:v1.0.1
 ```
 Access the web page at http://localhost:8080  
   
 ### Cleanup
 ```bash
 docker rm -f <container-name>
-docker rmi spring-host-status:1.0.0 spring-host-status:1.0.1
+docker rmi spring-host-status:v1.0.0 spring-host-status:v1.0.1
 ```
 
 ### The end, enjoy :-)
