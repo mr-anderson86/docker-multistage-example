@@ -5,7 +5,7 @@
 This repository represents a simple Java spring web application.  
 Originally, initiated using this website: https://start.spring.io/ it's a very good site, highly recommended.  
   
-The purpose of this project is to show the Docker Multi Stage build concept and use case.  
+The purpose of this project is to show the `Docker Multi Stage Build` concept and use case.  
 The way to do it is to build the Docker image twice: once without multi-stage build, and the other with it, and then compare between the images.  
 
 ### Prerequisites
