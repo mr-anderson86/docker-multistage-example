@@ -4,12 +4,13 @@
 
 This repository represents a simple Java spring web application.  
 Originally, initiated using this website: https://start.spring.io/ it's a very good site, highly recommended.  
+This app simulates a host activity monitor (such as Windows "Task Manager", Mac "Activity Monitor", or Prometheus + Grafana).  
   
 The purpose of this project is to show the `Docker Multi Stage Build` concept and use case.  
 The way to show this is to build the Docker image twice: once without multi-stage build, and the other with it, and then compare between the images.  
 
 ### Prerequisites
-* Docker (preferably on Linux/Mac, but also could work for Windows)  
+* Docker (preferably on Linux/Mac, since the app uses Linux commands like `free`, `uptime`, `df`, etc...)  
 
 ### Usage
 #### First step: without multi-stage build
