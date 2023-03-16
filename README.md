@@ -10,7 +10,7 @@ The purpose of this project is to show the `Docker Multi Stage Build` concept an
 The way to show this is to build the Docker image twice: once without multi-stage build, and the other with it, and then compare between the images.  
 
 ### Screenshot
-![screenshot](screenshot.png)
+<img src="screenshot.png" alt="screenshot" width="351" height="375">
 
 ### Prerequisites
 * Docker  
