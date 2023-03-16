@@ -10,7 +10,8 @@ The purpose of this project is to show the `Docker Multi Stage Build` concept an
 The way to show this is to build the Docker image twice: once without multi-stage build, and the other with it, and then compare between the images.  
 
 ### Prerequisites
-* Docker (preferably on Linux/Mac, since the app uses Linux commands like `free`, `uptime`, `df`, etc...)  
+* Docker  
+(preferably on Linux/Mac, since the app uses Linux commands like `free`, `uptime`, `df`, etc...)  
 
 ### Usage
 #### First step: without multi-stage build
