@@ -9,6 +9,9 @@ This app simulates a host activity monitor (such as Windows "Task Manager", Mac 
 The purpose of this project is to show the `Docker Multi Stage Build` concept and use case.  
 The way to show this is to build the Docker image twice: once without multi-stage build, and the other with it, and then compare between the images.  
 
+### Screenshot
+![screenshot](screenshot.png)
+
 ### Prerequisites
 * Docker  
 (preferably on Linux/Mac, since the app uses Linux commands like `free`, `uptime`, `df`, etc...)  
