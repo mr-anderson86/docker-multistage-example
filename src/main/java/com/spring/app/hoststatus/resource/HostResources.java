@@ -45,20 +45,32 @@ public class HostResources {
 
     @GetMapping
     public String hello() {
-        String hostName="", osName="", upTime="", loadAvg="", totalMem="", usedMem="", freeMem="", memUsage="", cpuUsage="";
+        String hostName="", osName="", upTime="", loadAvg="", totalMem="", usedMem="", freeMem="", cpuUsage="", diskSize="", diskUsed="", diskAvailable="";
         String newLine = "</br>";
 
         try {
+            double totalMemMB = Double.parseDouble(runCommand("free -m | grep Mem | awk '{print $2}'"));
+            double usedMemMB = Double.parseDouble(runCommand("free -m | grep Mem | awk '{print $3}'"));
+            double freeMemMB = Double.parseDouble(runCommand("free -m | grep Mem | awk '{print $4}'"));
+            double totalMemGB = totalMemMB / 1024;
+            double usedMemGB = usedMemMB / 1024;
+            double freeMemGB = freeMemMB / 1024;
+
             hostName = "Hostname: " + InetAddress.getLocalHost().getHostName() + newLine;
             osName = "Operating system: " + System.getProperty("os.name") + " " + System.getProperty("os.version") + newLine ;
-            upTime = "Uptime: " + runCommand("uptime | grep -oE 'up.*' | cut -d',' -f1,2 | sed 's/up //g'") + newLine;
+            upTime = "Uptime: " + runCommand("uptime | grep -oE 'up.*' | cut -d',' -f1 | sed 's/up //g'") + newLine;
             loadAvg = "Load AVG: " + runCommand("uptime | awk '{print $(NF-2),$(NF-1), $NF}'") + newLine;
-            totalMem = "Total memory: " + runCommand("free -g | grep Mem | awk '{print $2}'") + "G, ";
-            usedMem = "Used memory: " + runCommand("free -g | grep Mem | awk '{print $3}'") + "G, ";
-            freeMem = "Free memory: " + runCommand("free -g | grep Mem | awk '{print $4}'") + "G";
-            memUsage = totalMem + usedMem + freeMem + newLine;
+
+            totalMem = "Total memory: " + String.format("%.2f", totalMemGB) + "GB" + newLine;
+            usedMem = "Used memory: " + String.format("%.2f", usedMemGB) + "GB" + newLine;
+            freeMem = "Free memory: " + String.format("%.2f", freeMemGB) + "GB" + newLine;
+
             double cpu = getProcessCpuLoad();
             cpuUsage = "CPU Usage: " + cpu +"%" + newLine;
+
+            diskSize = "Disk size:" + runCommand("df -h . | tail -1 | awk '{print $2}'") + newLine;
+            diskUsed = "Disk used:" + runCommand("df -h . | tail -1 | awk '{print $3}'") + newLine;
+            diskAvailable = "Disk available:" + runCommand("df -h . | tail -1 | awk '{print $4}'") + newLine;
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -67,9 +79,16 @@ public class HostResources {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String mainPage = "Hello and welcome to the web host status application :-)" + newLine + newLine;
+        String mainPage = "<h1>Host Activity Monitor</h1>";
 
-        mainPage = mainPage + hostName + osName + upTime + loadAvg + memUsage + cpuUsage;
+        mainPage = mainPage + "<b>General</b>" + newLine;
+        mainPage = mainPage + hostName + osName + upTime + loadAvg + newLine;
+        mainPage = mainPage + "<b>CPU</b>" + newLine + cpuUsage + newLine;
+        mainPage = mainPage + "<b>Memory</b>" + newLine;
+        mainPage = mainPage + totalMem + usedMem + freeMem + newLine;
+        mainPage = mainPage + "<b>Disk</b>" + newLine;
+        mainPage = mainPage + diskSize + diskUsed + diskAvailable;
+         
         return mainPage;
     }
 
