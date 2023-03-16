@@ -68,9 +68,9 @@ public class HostResources {
             double cpu = getProcessCpuLoad();
             cpuUsage = "CPU Usage: " + cpu +"%" + newLine;
 
-            diskSize = "Disk size:" + runCommand("df -h . | tail -1 | awk '{print $2}'") + newLine;
-            diskUsed = "Disk used:" + runCommand("df -h . | tail -1 | awk '{print $3}'") + newLine;
-            diskAvailable = "Disk available:" + runCommand("df -h . | tail -1 | awk '{print $4}'") + newLine;
+            diskSize = "Disk size: " + runCommand("df -h . | tail -1 | awk '{print $2}'") + newLine;
+            diskUsed = "Disk used: " + runCommand("df -h . | tail -1 | awk '{print $3}'") + newLine;
+            diskAvailable = "Disk available: " + runCommand("df -h . | tail -1 | awk '{print $4}'") + newLine;
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
