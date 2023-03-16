@@ -1,4 +1,4 @@
-# docker-multistage-example
+# Docker Multi-Stage Build Example
 
 ## Description
 
