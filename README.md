@@ -68,7 +68,8 @@ docker exec -it my-app sh
 echo $REFRESH_INTERVAL
 # 5, or whichever value you provided above.
 
-exit #Will exit the container back into your host/computer
+exit
+# Will exit the container back into your host/computer
 ```
 
 ### Cleanup
