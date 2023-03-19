@@ -79,7 +79,13 @@ public class HostResources {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        String refreshIntervalEnv = System.getenv("REFRESH_INTERVAL");
+        String refreshIntervalSec = (refreshIntervalEnv != null) ? refreshIntervalEnv : "2.5";
+        String refreshIntervalMs = Double.toString(Double.parseDouble(refreshIntervalSec) * 1000);
+
         String mainPage = "<h1>Host Activity Monitor</h1>";
+
+        mainPage = mainPage + "<script>setInterval(function(){location.reload();}, " + refreshIntervalMs + ");</script>"; //Auto refresh every (refreshIntervalSec) seconds
 
         mainPage = mainPage + "<b>General</b>" + newLine;
         mainPage = mainPage + hostName + osName + upTime + loadAvg + newLine;
