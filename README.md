@@ -62,7 +62,7 @@ docker run -d --name my-app -p 8080:8080 -e REFRESH_INTERVAL=5 spring-host-statu
 ```
 Access the web page at http://localhost:8080  
 See that the page is now refreshing at a different interval than 2.5 seconds? :-)  
-In addition, you can see the value of the envirinment variable inside the container
+In addition, you can see the value of the envirinment variable inside the container:
 ```bash
 docker exec -it my-app sh
 echo $REFRESH_INTERVAL
